@@ -58,12 +58,7 @@ int main() {
         FindMinAndMax(data[i],data[i+1],data[i+2],&min,&max);
         image_data[i/channels]=(min+max)/2;
     }
-    if (stbi_write_jpg(filename_output,width,height,1,image_data,0) == 0) {
-        printf("Ошибка записи в файл\n");
-        free(image_data);
-        stbi_image_free(data);
-        return 0;
-    }
+    stbi_write_jpg(filename_output,width,height,1,image_data,0); 
     free(image_data);
     stbi_image_free(data);
     end_time = clock();

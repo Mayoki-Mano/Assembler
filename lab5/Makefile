@@ -18,15 +18,16 @@ EXE = lab5
 EXE2 = lab5withAsm
 all: $(SRCC) $(SRCSC) $(SRCSS) $(EXE) $(EXE2)
 
+.s.o:
+	$(AS) $(CFLAG) $(ASFLAGS) $< -o $@
+.c:
+	$(CC) $(CFLAG) -c $@ 
+
 $(EXE): $(OBJSS) $(OBJC) $(OBJSC)
-	$(LD) $(OBJC) -o $@ $(CCFLAGS)
+	$(LD) $(OBJC) -o $(EXE) $(CCFLAGS)
 
 $(EXE2): $(OBJSS) $(OBJC) $(OBJSC)
-	$(LD) $(OBJSS) $(OBJSC) -o $@ $(CCFLAGS)
-.s.o:
-	$(AS) $(ASFLAGS) $< -o $@
-.c.o:
-	$(CC) $(OBJSS) $< -o $@ $(CCFLAGS)
+	$(LD) $(OBJSS) $(OBJSC) -o $(EXE2) $(CCFLAGS)
 clean:
 	rm -rf $(EXE) $(OBJSS) $(OBJC) $(OBJSC) $(EXE2)
 

@@ -21,8 +21,6 @@ int main() {
         return 0;
     }
     //создание нового изображения с одним каналом
-    unsigned char min;
-    unsigned char max;
     unsigned char* image_data = malloc( sizeof(unsigned char)*(width * height * 1));
     AssemblyDesaturation(data,image_data,width,height);
     if (stbi_write_jpg(filename_output,width,height,1,image_data,0) == 0) {

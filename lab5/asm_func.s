@@ -3,13 +3,10 @@ global AssemblyDesaturation
 
 AssemblyDesaturation:
     ;unsigned char *data,unsigned char* image_data,int width, int height
-    ;rdi rsi dword[rdx] dword[r8]
+    ;rdi rsi dword[rcx] dword[rdx]
     xor rax,rax
-    mov eax,dword[rdx]
-    mov eax,dword[r8d]
-    xor rdx, rdx
-    mov edx, r8d
-    mul rdx
+    mov eax,edx
+    mul ecx
     mov r9, rax ; r9=width*height
     xor r10, r10 ;r10=i
     xor rax, rax
